@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>EPS1</title>
+    <meta charset="utf-8">
+    <script src="vue3.js"></script>
+</head>
+
+<tbody>
+    <div id="app">
+        <input v-model="message" placeholder="edit me">
+        {{ message }} - ({{ message.length }})
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello dVue!'
+                }
+            },
+            mounted() {
+                console.log('Component mounted.')
+            },
+
+        }).mount('#app');
+
+    </script>
+</tbody>
+
+
+</html>

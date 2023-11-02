@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>EPS2</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <style>
+        /* 
+           submit button in center of page
+        } */
+        #app {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            font-size: 16px;
+            border-radius: 12px;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+<tbody>
+    <div id="app">
+        <button :class="active ? 'red' : 'green'" @click="toggle">submit</button>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    active: true
+                }
+            },
+            methods: {
+                toggle() {
+                    this.active = !this.active
+                }
+            },
+            mounted() {
+                setTimeout(() => {
+                    this.message = 'test'
+                }, 2000);
+            },
+
+        }).mount('#app');
+
+    </script>
+</tbody>
+
+</html>

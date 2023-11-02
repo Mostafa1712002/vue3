@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>EPS2</title>
+    <meta charset="utf-8">
+    <script src="vue3.js"></script>
+
+    <style>
+        /* 
+           submit button in center of page
+        } */
+        #app {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            font-size: 16px;
+            border-radius: 12px;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+<tbody>
+    <div id="app">
+        <ul>
+            <h1>In Progress Tasks</h1>
+            <li v-for="item in inProgressAssignments" :key="item.id">
+                <label>{{ item.title }} <input type="checkbox" v-model="item.completed"></label>
+            </li>
+
+        </ul>
+        <ul>
+            <h1>Finished Tasks</h1>
+
+            <li v-for="item in completedAssignments" :key="item.id">
+                <label>{{ item.title }} <input type="checkbox" v-model="item.completed"></label>
+            </li>
+        </ul>
+        `
+    </div>
+
+
+    <script>
+        let body = {
+            data() {
+                return {
+                    assignments: [
+                        { title: 'Do Homework', completed: false, id: 1 },
+                        { title: 'Review 2 Books', completed: false, id: 2 },
+                        { title: 'Make Research', completed: false, id: 3 },
+
+                    ]
+
+                }
+            },
+            computed() {
+                return {
+                    completedAssignments: assignments.filter(a => !a.completed),
+                    inProgressAssignments: assignments.filter(a => a.completed),
+
+                }
+            },
+
+        }
+        const app = Vue.createApp(body).mount('#app');
+
+    </script>
+</tbody>
+
+</html>

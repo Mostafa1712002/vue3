@@ -1,11 +1,14 @@
 import assignmentList from './AssignmentList.js';
+import AssignmentCreate from './AssignmentCreate.js';
 export default {
     components: {
-        assignmentList
+        assignmentList,
+        AssignmentCreate
     },
-    'template': `
+    template: `
         <assignmentList :assignments="filter.inProgress" title='in progress'></assignmentList>
         <assignmentList :assignments="filter.completed" title='Finished Tasks'></assignmentList>
+        <AssignmentCreate @store='store'></AssignmentCreate> 
     `,
     data() {
         return {
@@ -14,18 +17,29 @@ export default {
                 { title: 'Review 2 Books', completed: false, id: 2 },
                 { title: 'Make Research', completed: false, id: 3 },
 
-            ]
+            ],
+            newAssignment: ''
 
         }
     },
     computed: {
         filter() {
             return {
-                completed:  this.assignments.filter(a => a.completed),
+                completed: this.assignments.filter(a => a.completed),
                 inProgress: this.assignments.filter(a => !a.completed)
             }
         }
 
 
+    },
+    methods: {
+        store(name) {
+            this.assignments.push({
+                title: name,
+                completed: false,
+                id: this.assignments.length + 1
+            });
+
+        }
     },
 }

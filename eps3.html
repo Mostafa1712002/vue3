@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>EPS2</title>
+    <title>EPS3</title>
     <meta charset="utf-8">
     <script src="vue3.js"></script>
 
@@ -39,14 +39,14 @@
 </head>
 <tbody>
     <div id="app">
-        <ul>
+        <ul v-if="inProgressAssignments.length">
             <h1>In Progress Tasks</h1>
             <li v-for="item in inProgressAssignments" :key="item.id">
                 <label>{{ item.title }} <input type="checkbox" v-model="item.completed"></label>
             </li>
 
         </ul>
-        <ul>
+        <ul v-show="completedAssignments.length">
             <h1>Finished Tasks</h1>
 
             <li v-for="item in completedAssignments" :key="item.id">
@@ -70,12 +70,16 @@
 
                 }
             },
-            computed() {
-                return {
-                    completedAssignments: assignments.filter(a => !a.completed),
-                    inProgressAssignments: assignments.filter(a => a.completed),
+            computed: {
+                completedAssignments() {
+                    return this.assignments.filter(a => !a.completed);
+
+                },
+                inProgressAssignments() {
+                    return this.assignments.filter(a => a.completed);
 
                 }
+
             },
 
         }

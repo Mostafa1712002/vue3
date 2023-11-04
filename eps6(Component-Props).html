@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>EPS6</title>
+    <meta charset="utf-8">
+    <script src="vue3.js"></script>
+    <!-- cdn bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        /* 
+           submit button in center of page
+        } */
+        #app {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            font-size: 16px;
+            border-radius: 12px;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+<tbody>
+    <div id="app">
+        <app-button type="info" >click me</app-button>
+    </div>
+
+
+    <script type="module">
+        import App from '/js/components/App.js';
+
+        const app = Vue.createApp(App).mount('#app');
+
+    </script>
+</tbody>
+
+</html>

@@ -6,28 +6,48 @@ export default {
         AssignmentCreate
     },
     template: `
-        <assignmentList :assignments="filter.inProgress" title='in progress'></assignmentList>
-        <assignmentList :assignments="filter.completed" title='Finished Tasks'></assignmentList>
+    <div class="d-flex justify-content-around">
+    <button v-for="tag in tags" @click="currentTag = tag" class="
+    btn btn-outline-secondary 
+    "
+    :class="{
+        'active': currentTag == tag
+    }"
+    >{{ tag }}</button>
+    </div>
+        <assignmentList :assignments="filter.inProgress" title='progress'></assignmentList>
+        <assignmentList :assignments="filter.completed" title='Finished'></assignmentList>
         <AssignmentCreate @store='store'></AssignmentCreate> 
     `,
     data() {
         return {
             assignments: [
-                { title: 'Do Homework', completed: false, id: 1 },
-                { title: 'Review 2 Books', completed: false, id: 2 },
-                { title: 'Make Research', completed: false, id: 3 },
+                { title: 'Do Homework', completed: false, id: 1, tag: 'math' },
+                { title: 'Review 2 Books', completed: false, id: 2, tag: 'math' },
+                { title: 'Make Research', completed: false, id: 3, tag: 'science' },
 
             ],
-            newAssignment: ''
+            newAssignment: '',
+            currentTag: 'all'
 
         }
     },
     computed: {
         filter() {
             return {
-                completed: this.assignments.filter(a => a.completed),
-                inProgress: this.assignments.filter(a => !a.completed)
+                completed: this.filteredAssignments.filter(a => a.completed),
+                inProgress: this.filteredAssignments.filter(a => !a.completed)
             }
+        },
+        tags() {
+            return ['all',...new Set(this.assignments.map(a => a.tag))];
+        },
+        filteredAssignments() {
+            
+            if (this.currentTag == 'all') {
+                return this.assignments;
+            }
+            return this.assignments.filter(a => a.tag === this.currentTag);
         }
 
 
@@ -42,4 +62,5 @@ export default {
 
         }
     },
+
 }

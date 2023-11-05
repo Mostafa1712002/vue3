@@ -1,9 +1,16 @@
 export default {
 
     template: `
-        <form @submit.prevent='store'>
-            <input v-model="newAssignment" type="text" placeholder="Add new assignment" />
-            <button type="submit">Add</button>
+        <form @submit.prevent='store' class='
+            col-12
+            d-flex
+            flex-row
+            justify-content-center
+            align-items-center
+            
+        '>
+            <input v-model="newAssignment" type="text" class="form-control" placeholder="Add new assignment" />
+            <button type="submit" class="btn btn-success btn-sm ml-2">Add</button>
         </form>
     `,
 

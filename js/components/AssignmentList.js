@@ -2,11 +2,13 @@ import assignment from './Assignment.js';
 export default {
     components: {
         assignment
-    },  
+    },
     'template': `
-    <section class=" col-12">
+    <section class="col-12">
+   
     <ul v-if="assignments.length">
-        <h1>{{ title }}</h1>
+        <h1>{{ title }} <span class="badge badge-light">{{ assignments.length }}</span></h1>
+            
         <li v-for="item in assignments" :key="item.id">
            <assignment :item="item"></assignment>
         </li>
@@ -20,7 +22,7 @@ export default {
         },
         title: {
             type: String,
-            default: '' 
+            default: ''
         }
     },
 }

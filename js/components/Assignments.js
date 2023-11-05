@@ -8,7 +8,7 @@ export default {
         AssignmentTags
     },
     template: `
-        <Assignment-tags :initialTags="this.assignments.map(a => a.tag)" :currentTag='currentTag' @change="currentTag = $event"  ></Assignment-tags>
+        <Assignment-tags :initialTags="this.assignments.map(a => a.tag)" v-model:currentTag='currentTag' @change="currentTag = $event"  ></Assignment-tags>
         <assignmentList :assignments="filter.inProgress" title='progress'></assignmentList>
         <assignmentList :assignments="filter.completed" title='Finished'></assignmentList>
         <AssignmentCreate @store='store'></AssignmentCreate> 

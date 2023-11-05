@@ -2,7 +2,7 @@ export default {
 
     template: `
     <div class="d-flex justify-content-around">
-    <button v-for="tag in tags" @click="$emit('change',tag)" class="
+    <button v-for="tag in tags" @click="$emit('update:currentTag',tag)" class="
     btn btn-outline-secondary 
     "
     :class="{
@@ -16,7 +16,7 @@ export default {
             type: Array,
             default: () => []
         },
-        currentTag: 'all'
+        currentTag: String
     },
 
     computed: {

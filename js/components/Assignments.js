@@ -1,20 +1,14 @@
 import assignmentList from './AssignmentList.js';
 import AssignmentCreate from './AssignmentCreate.js';
+import AssignmentTags from './AssignmentTags.js' ;
 export default {
     components: {
         assignmentList,
-        AssignmentCreate
+        AssignmentCreate,
+        AssignmentTags
     },
     template: `
-    <div class="d-flex justify-content-around">
-    <button v-for="tag in tags" @click="currentTag = tag" class="
-    btn btn-outline-secondary 
-    "
-    :class="{
-        'active': currentTag == tag
-    }"
-    >{{ tag }}</button>
-    </div>
+        <Assignment-tags :initialTags="this.assignments.map(a => a.tag)" :currentTag='currentTag' @change="currentTag = $event"  ></Assignment-tags>
         <assignmentList :assignments="filter.inProgress" title='progress'></assignmentList>
         <assignmentList :assignments="filter.completed" title='Finished'></assignmentList>
         <AssignmentCreate @store='store'></AssignmentCreate> 
@@ -39,9 +33,7 @@ export default {
                 inProgress: this.filteredAssignments.filter(a => !a.completed)
             }
         },
-        tags() {
-            return ['all',...new Set(this.assignments.map(a => a.tag))];
-        },
+      
         filteredAssignments() {
             
             if (this.currentTag == 'all') {

@@ -1,0 +1,22 @@
+{
+    "assignments": [
+        {
+            "title": "Do Homework",
+            "completed": false,
+            "id": 1,
+            "tag": "math"
+        },
+        {
+            "title": "Review 2 Books",
+            "completed": false,
+            "id": 2,
+            "tag": "math"
+        },
+        {
+            "title": "Make Research",
+            "completed": false,
+            "id": 3,
+            "tag": "science"
+        }
+    ]
+}

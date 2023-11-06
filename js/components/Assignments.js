@@ -1,6 +1,6 @@
 import assignmentList from './AssignmentList.js';
 import AssignmentCreate from './AssignmentCreate.js';
-import AssignmentTags from './AssignmentTags.js' ;
+import AssignmentTags from './AssignmentTags.js';
 export default {
     components: {
         assignmentList,
@@ -15,12 +15,7 @@ export default {
     `,
     data() {
         return {
-            assignments: [
-                { title: 'Do Homework', completed: false, id: 1, tag: 'math' },
-                { title: 'Review 2 Books', completed: false, id: 2, tag: 'math' },
-                { title: 'Make Research', completed: false, id: 3, tag: 'science' },
-
-            ],
+            assignments: [],
             newAssignment: '',
             currentTag: 'all'
 
@@ -33,9 +28,9 @@ export default {
                 inProgress: this.filteredAssignments.filter(a => !a.completed)
             }
         },
-      
+
         filteredAssignments() {
-            
+
             if (this.currentTag == 'all') {
                 return this.assignments;
             }
@@ -53,6 +48,14 @@ export default {
             });
 
         }
+    },
+
+    created() {
+
+        fetch('http://localhost:3001/assignments').then(response => response.json()).then(data => {
+            this.assignments = data;
+        }
+        );
     },
 
 }

@@ -1,11 +1,13 @@
 import assignmentList from './AssignmentList.js';
 import AssignmentCreate from './AssignmentCreate.js';
 import AssignmentTags from './AssignmentTags.js';
+import panel from './Panel.js';
 export default {
     components: {
         assignmentList,
         AssignmentCreate,
-        AssignmentTags
+        AssignmentTags,
+        panel
     },
     template: `
         <Assignment-tags :initialTags="this.assignments.map(a => a.tag)" v-model:currentTag='currentTag' @change="currentTag = $event"  ></Assignment-tags>
@@ -14,6 +16,16 @@ export default {
         </assignmentList>
         <assignmentList :assignments="filter.completed" title='Finished'>
         </assignmentList>
+
+       <panel>
+         <template #title>
+            <h1>Assignment List</h1>
+            </template>
+            <template #body>
+      body panel
+            </template>
+       </panel>
+       
         
     `,
     data() {
@@ -47,7 +59,8 @@ export default {
             this.assignments.push({
                 title: name,
                 completed: false,
-                id: this.assignments.length + 1
+                id: this.assignments.length + 1,
+                tag: 'others'
             });
 
         }

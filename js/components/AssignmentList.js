@@ -4,19 +4,26 @@ export default {
     components: {
         assignment
     },
-    'template': `
-    <section class="col-12" v-if="show && assignments.length">
-    <button @click="show = !show">&times</button>
-    <ul >
-        <h1>{{ title }} <span class="badge badge-light">{{ assignments.length }}</span></h1>
-            
-        <li v-for="item in assignments" :key="item.id">
-           <assignment :item="item"></assignment>
-        </li>
-    </ul>
-    <slot></slot>
-    </section>
-    `,
+    'template':
+        ` <div class="card  mt-2 ">
+        <div class="card-body">
+            <h5 class="card-title">{{ title }} <span class="badge badge-light">{{ assignments.length }}</span></h5>
+            <p class="card-text">
+            <ul>
+                <li v-for="item in assignments" :key="item.id">
+                    <assignment :item="item"></assignment>
+                </li>
+            </ul>
+            </p>
+            <slot></slot>
+        </div>
+    </div>
+
+
+
+`
+
+    ,
     props: {
         assignments: {
             type: Array,

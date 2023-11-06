@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>EPS15</title>
+    <meta charset="utf-8">
+    <script src="vue3.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        body {
+            margin: auto;
+            width: 50%;
+            padding: 200px;
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+    <div id="app" class="border" style="
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+        
+    ">
+    </div>
+
+ 
+    <script type="module">
+        import Assignments from '/js/components/Assignments.js';
+
+        const app = Vue.createApp(Assignments).mount('#app');
+
+    </script>
+</body>
+
+</html>

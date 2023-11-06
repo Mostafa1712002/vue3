@@ -9,9 +9,12 @@ export default {
     },
     template: `
         <Assignment-tags :initialTags="this.assignments.map(a => a.tag)" v-model:currentTag='currentTag' @change="currentTag = $event"  ></Assignment-tags>
-        <assignmentList :assignments="filter.inProgress" title='progress'></assignmentList>
-        <assignmentList :assignments="filter.completed" title='Finished'></assignmentList>
+        <assignmentList :assignments="filter.inProgress" title='progress'>
         <AssignmentCreate @store='store'></AssignmentCreate> 
+        </assignmentList>
+        <assignmentList :assignments="filter.completed" title='Finished'>
+        </assignmentList>
+        
     `,
     data() {
         return {
